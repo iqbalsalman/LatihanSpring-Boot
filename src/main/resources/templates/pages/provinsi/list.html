@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Provinsi</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Form Data Provinsi</li>
+    </ol>
+    <div class="row">
+    <div class="form-group">
+        <div class="col-sm-3">
+            <a href="/provinsi/form" th:href="@{/provinsi/form}" class="btn btn-success">Tambah data</a>
+        </div>
+    </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Data Table Provinsi</div>
+        <div class="card-body">
+            <div class="alert alert-success" th:if="${sukses} != null" th:text="${sukses}"></div>
+            <div class="alert alert-danger" th:if="${NotAvalibel} != null" th:text="${NotAvalibel}"></div>
+            <div class="table-responsive">
+                <table table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Nomor</th>
+                        <th>Nama Provinsi</th>
+                        <td>Created Date</td>
+                        <td>Created By</td>
+                        <td>Action</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="data, itrStat : ${provinsi}">
+                        <td th:text="${itrStat.count}">1</td>
+                        <td th:text="${data.nama}"></td>
+                        <td th:text="${data.createdDate}">2018-02-15 16:10</td>
+                        <td th:text="${data.createBy}">hardcode</td>
+
+                        <td>  <a th:href="${'/provinsi/hapus/' + data.id}" class="btn btn-info">Hapus</a>
+                            <a th:href="${'/provinsi/form/' + data.id}" class="btn btn-danger">Edit</a>   </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

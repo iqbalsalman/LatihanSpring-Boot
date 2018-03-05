@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>header</title>
+</head>
+<body>
+<div th:fragment="header">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            jQuery.validator.setDefaults({
+                errorPlacement: function(error, element) {
+                    error.appendTo('#invalid-' + element.attr('id'));
+                }
+            });
+
+            $("#form").validate({
+
+                rules: {
+                    namaLengkap: {
+
+                        required: true,
+                    },
+                    alamat:{
+
+                        required: true,
+                    },
+                    nomerIdentitas : {
+
+                        required: true,
+                    },
+                    jeniskelamin:{
+
+                        required: true,
+                    },
+                    tanda_pengenal:{
+
+                        required: true,
+                    },
+                    no_pengenal:{
+
+                        required: true,
+                    },
+                    status:{
+
+                        required: true,
+                    },
+                    kota:{
+
+                        required: true,
+                    },
+                    kodepos:{
+
+                        required: true,
+                    },
+                    tlp:{
+
+                        required: true,
+                    },
+                    fax:{
+
+                        required: true,
+                    },
+                    nohp:{
+
+                        required: true,
+                    },
+                    email:{
+
+                        required: true,
+                    }
+
+
+                },
+                messages: {
+
+                    namaLengkap: {
+
+                        required: "Nama Lengkap Wajib di isi",
+                    },
+
+                    alamat:{
+
+                        required: "Tempat wajib diisi",
+                    },
+                    nomerIdentitas : {
+
+                        required: "Nomer Identitas wajid di isi",
+                    },
+                    jeniskelamin:{
+
+                        required: "Jenis Kelamin Wajib di isi",
+                    },
+                    tanda_pengenal:{
+
+                        required: "Tanda Pengenal Wajib di isi",
+                    },
+                    no_pengenal:{
+
+                        required: "Nomer Pengenal Wajib di isi",
+                    },
+                    status:{
+
+                        required: "Status Pernikahan wajib di isi",
+                    },
+                    kota:{
+
+                        required: "Kota Nasabah Wajib di isi",
+                    },
+                    kodepos:{
+
+                        required: "Kode pos wajib di isi",
+                    },
+                    tlp:{
+
+                        required: "No telepon wajib di isi",
+                    },
+                    fax:{
+
+                        required: "No fax wajib di isi",
+                    },
+                    nohp:{
+
+                        required: "No hanphone wajib di isi",
+                    },
+                    email:{
+
+                        required: "email Wajib di isi",
+                    }
+                }
+            });
+        })($);
+    </script>
+</div>
+
+</body>
+</html>

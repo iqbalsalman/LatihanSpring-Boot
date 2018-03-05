@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Pendidikan</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Form Product Bank</li>
+    </ol>
+<form class="form-horizontal" th:action="@{/produk/submit}" th:object="${produk}"
+      th:method="post" action="/agama/submit" method="post" enctype="multipart/form-data" >
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Kode Produk</label>
+        <div class="col-lg-6">
+            <input type="text" name="kode" class="form-control" id="kode" th:field="*{kode}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label" for="nama">Nama Lengkap</label>
+        <div class="col-lg-6">
+            <input type="text" name="nama" class="form-control" id="nama" th:field="*{nama}"/>
+        </div>
+        <div class="col-lg-4">
+            <input type="hidden" name="id" class="form-control"  th:field="*{id}" readonly/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label" for="setoran_awal">Setoran Awakl</label>
+        <div class="col-lg-6">
+            <input type="text" name="setoran_awal" class="form-control" id="setoran_awal" th:field="*{setoran_awal}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label" for="bunga">Bunga</label>
+        <div class="col-lg-6">
+            <input type="text" name="bunga" class="form-control" id="bunga" th:field="*{bunga}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label" for="biaya_admin">Biaya Administrasi</label>
+        <div class="col-lg-6">
+            <input type="text" name="biaya_admin" class="form-control" id="biaya_admin" th:field="*{biaya_admin}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label" for="activae">Biaya Penutup</label>
+        <div class="col-lg-6">
+            <select name="active" id="activae" th:field="*{active}">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-2">
+            <button type="submit" class="btn btn-primary">Kirim</button>
+            <button type="reset" class="btn btn-warning">Reset</button>
+        </div>
+    </div>
+</form>
+</section>
+</body>
+</html>

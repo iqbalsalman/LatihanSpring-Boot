@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Nasabah Perorangan</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h4>Tambah Nasabah Perorangan</h4>
+
+    <form class="form-horizontal" th:action="@{/nasabah/submit}"
+          th:object="${nasabah}" th:method="post" action="/nasabah/submit" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="namalengkap">Nama Lengkap</label>
+              <div class="col-lg-3">
+                  <input type="text" name="namalengkap" class="form-control" id="namalengkap" th:field="*{namaLengkap}"/>
+              </div>
+            <div class="col-lg-3">
+                <input type="hidden" id="kodenasabah" class="form-control" name="kodeKotanasabah" th:field="*{id}" readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="alamat">Alamat</label>
+            <div class="col-lg-6">
+                <textarea name="alamat" th:field="*{alamat}" class="form-control" id="alamat" cols="30"
+                      + rows="10"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="nomerIdentitas">Nomer Identitas</label>
+            <div class="col-lg-6">
+                <input type="text" name="nomerIdentitas" class="form-control" id="nomerIdentitas" th:field="*{nomerIdentitas}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="jeniskelamin">Jenis Kelamin</label>
+            <div class="col-lg-6">
+                <select name="jeniskelamin" id="jeniskelamin" th:field="*{jenisKelamin}" class="form-control">
+                    <option value="L">Laki-Laki</option>
+                    <option value="P">Perempuan</option>
+                </select>
+            </div>
+        </div>
+       <br/>
+        <div class="form-group">
+            <div class="col-lg-2">
+                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+            </div>
+        </div>
+    </form>
+   </section>
+  </body>
+</html>

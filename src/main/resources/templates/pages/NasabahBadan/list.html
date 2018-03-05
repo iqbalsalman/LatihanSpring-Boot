@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Nasabah Badan Usaha</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Data Biodata Nasabah Badan Usaha</li>
+    </ol>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <a href="/nasabahbadan/form"
+                   th:href="@{/nasabahbadan/form}" class="btn btn-success">Tambah Data</a>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Data Table Perorangan</div>
+        <div class="card-body">
+            <div class="alert alert-success" th:if="${Sukses} != null" th:text="${Sukses}"></div>
+            <div class="alert alert-danger" th:if="${Novalid} != null" th:text="${Novalid}"></div>
+            <div class="table-responsive">
+                <table table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                    <tr>
+                        <th>Nomor</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Nomer NPWP</th>
+                        <th>Hapus \ Edit</th>
+                    </tr>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="nasabah, itrStat : ${listnasabah}">
+                        <td th:text="${itrStat.count}">1</td>
+                        <td th:text="${nasabah.namaLengkap}">Muslim</td>
+                        <td th:text="${nasabah.alamat}">Islam</td>
+                        <td th:text="${nasabah.nomorNpwp}">hardcode</td>
+                        <td><a th:href="${'/nasabahbadan/hapus/' + nasabah.id}" class="btn btn-info">Hapus</a>
+                            <a th:href="${'/nasabahbadan/form/' + nasabah.id}" class="btn btn-danger">Edit</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

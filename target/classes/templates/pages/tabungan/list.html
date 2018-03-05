@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Tabungan</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <a href="/tabungan/list" class="btn btn-success" th:href="@{/tabungan/form}">Tambah Data</a>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="alert alert-success" th:if="${Sukses} != null" th:text="${Sukses}"></div>
+            <div class="alert alert-danger" th:if="${notAvailabel} != null" th:text="${notAvailabel}"></div>
+            <i class="fa fa-table"></i> Data Table Tabungan Nasabah</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <td>Nomor</td>
+                        <td>Nomor Rekening</td>
+                        <td>Nama Nasabah</td>
+                        <td>Tanggal Opening</td>
+                        <td>Jenis Tabungan</td>
+                        <td>Created By</td>
+                        <td>Detail Tabungan</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="tab, itrStat : ${listTabungan}">
+                        <td th:text="${itrStat.count}">1</td>
+                        <td th:text="${tab.nomorRekening}">Bandung</td>
+                        <td th:text="${tab.nasabah.namaLengkap}">Jawa Barat</td>
+                        <td th:text="${tab.opening}">Jawa Barat</td>
+                        <td th:text="${tab.kriteriaProduk.nama}">Jawa Barat</td>
+                        <td th:text="${tab.createdBy}">Jawa Barat</td>
+                        <td>
+                            <a href="#" th:href="@{'/tabungan/detail/'+${tab.id}}" class="btn btn-primary">Detail</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+       </div>
+    </div>
+</section>
+</body>
+</html>

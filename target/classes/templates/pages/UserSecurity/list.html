@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Produk</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="alert alert-success" th:if="${sukses} != null" th:text="${sukses}"></div>
+            <div class="alert alert-danger" th:if="${noValid} != null" th:text="${noValid}"></div>
+            <i class="fa fa-table"></i> Data Table Produk</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Nomor</th>
+                        <th>Nama</th>
+                        <th>Keterangan</th>
+                        <th>Aktif</th>
+                        <th>Created Date</th>
+                        <th>Created By</th>
+                        <th>Nama Lengkap</th>
+                        <th>Biodata</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="userSecurity, itrStat : ${listsecurity}">
+                        <td th:text="${itrStat.count}">1</td>
+                        <td th:text="${userSecurity.nama}"></td>
+                        <td th:text="${userSecurity.password}"></td>
+                        <td th:text="${userSecurity.active}"></td>
+                        <td th:text="${userSecurity.ceatedBy}"></td>
+                        <td th:text="${userSecurity.createdDate}"></td>
+                        <td th:text="${userSecurity.nama_lengkap}"></td>
+                        <td th:text="${userSecurity.biodata}"></td>
+                        <td><a th:href="${'/userSecurity/hapus/' + userSecurity.id}" class="btn btn-info">Hapus</a>
+                            <a th:href="${'/userSecurity/form/' + userSecurity.id}" class="btn btn-danger">Edit</a>   </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

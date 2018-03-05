@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Provinsi</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Data Agama</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Data Table Agama</div>
+        <div class="card-body">
+            <div class="alert alert-success" th:if="${alertSuccess} != null" th:text="${alertSuccess}"></div>
+            <div class="alert alert-danger" th:if="${notAvailabel} != null" th:text="${notAvailabel}"></div>
+            <div class="table-responsive">
+                <table table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <td>Nomor</td>
+                        <td>Nama</td>
+                        <td>Keterangan</td>
+                        <td>Created Date</td>
+                        <td>Created By</td>
+                        <td>Hapus \ Edit</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="agama : ${lisAgama}">
+                        <td th:text="${agama.id}">1</td>
+                        <td th:text="${agama.nama}">Muslim</td>
+                        <td th:text="${agama.deskripsi}">Islam</td>
+                        <td th:text="${agama.createdDate}">2018-02-15 16:10</td>
+                        <td th:text="${agama.createdBy}">hardcode</td>
+                        <td><a th:href="${'/agama/hapus/delete/' + agama.id}" class="btn btn-info">Hapus</a>
+                            <a th:href="${'/agama/form/' + agama.id}" class="btn btn-danger">Edit</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

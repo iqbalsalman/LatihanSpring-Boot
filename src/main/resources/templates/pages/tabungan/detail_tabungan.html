@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Tabungan</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="form-group">
+            <label class="col-sm-12" for="nomorRekening">Nomor Rekening</label>
+            <div class="col-sm-12">
+                <input type="text" id="nomorRekening" readonly th:value="${tabungan.nomorRekening}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-12" for="namaNasabah">Nama Nasabah</label>
+            <div class="col-sm-12">
+                <input type="text" id="namaNasabah" readonly th:value="${nasabah.namaLengkap}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-10" for="saldo">Saldo tabungan</label>
+            <div class="col-sm-10">
+                <input type="text" id="saldo" class="form-control" th:value="${tabungan.saldo}" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="for-group">
+            <div class="col-sm-3">
+                <a href="#" th:href="@{'/tabungan/setoran/'+${tabungan.id}}" class="btn btn-primary">Setoran Tabungan</a>
+            </div>
+        </div>
+        <div class="for-group">
+            <div class="col-sm-3">
+                <a href="#" th:href="@{'/tabungan/tarik/'+${tabungan.id}}" class="btn btn-warning">Penarikan Tabungan</a>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-success" th:if="${alertsukses} != null" th:text="${alertsukses}"></div>
+    <div class="alert alert-success" th:if="${Sukses} != null" th:text="${Sukses}"></div>
+    <div class="alert alert-danger" th:if="${notAvailabel} != null" th:text="${notAvailabel}"></div>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Data Table Tabungan Nasabah</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <td>Nomor</td>
+                        <td>Tanggal Transaksi</td>
+                        <td>Jenis Transaksi</td>
+                        <td>Debet</td>
+                        <td>Kredit</td>
+                        <td>Saldo</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="mutasi, itrStat : ${tabungan.listMutasia}">
+                        <td th:text="${itrStat.count}">1</td>
+                        <td th:text="${mutasi.tanggal}">Bandung</td>
+                        <td th:text="${mutasi.keterangan}">Jawa Barat</td>
+                        <td><span th:inline="text">Rp [[${#numbers.formatDecimal
+                            (mutasi.debet, 0, 'COMMA', 2, 'POINT')}]]</span></td>
+                        <td><span th:inline="text">Rp [[${#numbers.formatDecimal
+                            (mutasi.credit, 0, 'COMMA', 2, 'POINT')}]]</span></td>
+                        <td><span th:inline="text">Rp [[${#numbers.formatDecimal
+                            (mutasi.saldo, 0, 'COMMA', 2, 'POINT')}]]</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

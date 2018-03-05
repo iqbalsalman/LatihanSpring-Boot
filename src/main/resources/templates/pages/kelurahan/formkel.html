@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Kecamatan</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Form Kelurahan</li>
+    </ol>
+    <form class="form-horizontal" th:action="@{/kelurahan/submit}" th:object="${kel}"
+          th:method="post" action="/kelurahan/submit" method="post" enctype="multipart/form-data" >
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="namaKel">Nama Kelurahan</label>
+            <div class="col-lg-6">
+                <input type="text" id="namaKel" class="form-control" name="namaKel" th:field="*{nama_kel}"/>
+                <div th:if="${#fields.hasErrors('nama_kel')}" th:errors="*{nama_kel}" class="alert alert-danger">Age Error</div>
+            </div>
+            <div class="col-lg-4">
+                <input type="hidden" id="kodeKelurahan" class="form-control" name="kodeKelurahan" th:field="*{id}" readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="kodepos">Kode Pos</label>
+            <div class="col-lg-6">
+                <input type="text" id="kodepos" class="form-control" name="kodepos" th:field="*{pos_kel}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="kecamatanId">Nama Kota</label>
+            <div class="col-lg-6">
+                <select name="kecamatanId" id="kecamatanId" th:field="*{kecamatan.id}" class="form-control">
+                    <option value="" th:each="prop : ${listkelurahan}" th:value="${prop.id}"
+                            th:label="${prop.nama}">
+                    </option>
+                </select>
+                <div th:if="${#fields.hasErrors('kecamatan')}" th:errors="*{kecamatan}" class="alert alert-danger">Age
+                    Error
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-2">
+                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>

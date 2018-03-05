@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master User</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h4>Tambah Data Users</h4>
+    <form class="form-horizontal" th:action="@{/userSecurity/submit}" th:object="${userSecurity}"
+          th:method="post" action="/userSecurity/submit" method="post" enctype="multipart/form-da">
+        <div class="form-group">
+          <label class="col-lg-3 control-label" for="namauser">Nama Users</label>
+          <div class="col-lg-3">
+            <input type="text" id="namauser" class="form-control" name="namauser" th:field="*{nama}"/>
+          </div>
+        <div class="col-lg-3">
+            <input type="hidden" id="kodeSecurity" class="form-control" name="kodeSecurity" th:field="*{id}" readonly/>
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="Password">Password</label>
+            <div class="col-lg-3">
+                <input type="password" id="Password" class="form-control" name="Password" th:field="*{password}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="actife">Active</label>
+            <div class="col-lg-3">
+                <select name="actife" id="actife" th:field="*{active}" class="form-control">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="biodata">Biodata Diri</label>
+            <div class="col-lg-8">
+                <textarea name="biodata" th:field="*{biodata}" class="form-control" id="biodata" cols="30"
+                          +                      rows="10"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="namaleng">Nama Lengkap</label>
+            <div class="col-lg-3">
+                <input type="text" id="namaleng" class="form-control" name="namaleng" th:field="*{nama_lengkap}"/>
+                <div th:if="${#fields.hasErrors('nama_lengkap')}" th:errors="*{nama_lengkap}" class="alert alert-danger">Age Error</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="akses">Jenis Akses</label>
+            <div class="col-lg-3">
+                <select name="akses" id="akses" th:field="*{listRole}" class="form-control">
+                    <option value="" th:each="role: ${roles}" th:value="${role.id}"
+                            th:label="${role.nama}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-lg-2">
+                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>

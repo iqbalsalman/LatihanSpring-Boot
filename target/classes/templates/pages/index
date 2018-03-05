@@ -1,0 +1,95 @@
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="namaLengkap">Nama Lengkap</label>
+    <div class="col-lg-3">
+        <input type="text" class="form-control" th:field="*{biodata.namaLengkap}" name="namaLengkap" id="namaLengkap"/>
+        <div style="color: #ff0000;" id="invalid-namaLengkap" class="error_msg"></div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="alamat">Alamat</label>
+    <div class="col-lg-3">
+        <input type="hidden" id="kodenasabah" class="form-control" name="kodeKotanasabah" th:field="*{id}" readonly/>
+    </div>
+    <div class="col-lg-6">
+                <textarea name="alamat" th:field="*{alamat}" class="form-control" id="alamat" cols="30"
+                          + rows="10"></textarea>
+        <div style="color: red;" id="invalid-alamat" class="error_msg"></div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="nomerIdentitas">Nomer Identitas</label>
+    <div class="col-lg-6">
+        <input type="text" name="nomerIdentitas"  th:field="*{nomerIdentitas}" class="form-control" id="nomerIdentitas"/>
+        <div style="color: red;" id="invalid-nomerIdentitas" class="error_msg"></div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="jeniskelamin">Jenis Kelamin</label>
+    <div class="col-lg-6">
+        <select name="jeniskelamin"  th:field="*{jenisKelamin}" id="jeniskelamin" class="form-control">
+            <option value="L">Laki-Laki</option>
+            <option value="P">Perempuan</option>
+        </select>
+        <div style="color: red;" id="invalid-jeniskelamin" class="error_msg"></div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="kota">Kota</label>
+    <div class="col-lg-6">
+        <input type="text" name="kota" class="form-control"  th:field="*{rumah.kota}" id="kota"/>
+        <div style="color: red;" id="invalid-kota" class="error_msg"></div>
+    </div>
+    <div class="col-lg-6">
+        <input type="hidden" name="idalamat" class="form-control" id="idalamat" th:field="*{rumah.idalamat}" readonly/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="agamaid">Agama</label>
+    <div class="col-lg-6">
+        <select name="agamaid"  th:field="*{rumah.agamaid}" class="form-control" id="agamaid">
+            <option value="" th:each="ag : ${agama}" th:value="${ag.nama}"
+                    th:label="${ag.nama}">
+            </option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="kodepos">Kode Pos</label>
+    <div class="col-lg-6">
+        <input type="text" class="form-control" name="kodepos"  th:field="*{rumah.kodepos}" id="kodepos"/>
+        <div style="color: red;" id="invalid-kodepos" class="error_msg"></div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="tlp">Nomer Telepon</label>
+    <div class="col-lg-6">
+        <input type="text" class="form-control" name="tlp"  th:field="*{rumah.tlp}" id="tlp"/>
+        <div style="color: red;" id="invalid-tlp" class="error_msg"></div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="fax">Nomer Fax</label>
+    <div class="col-lg-6">
+        <input type="text" class="form-control" name="fax"  th:field="*{rumah.fax}" id="fax"/>
+        <div style="color: red;" id="invalid-fax" class="error_msg"></div>
+    </div>
+<div class="col-lg-6">
+    <input type="hidden" class="form-control" name="biodataid" value="" th:each="prop : ${biodata}" th:value="${prop.id}"
+           id="biodataid" th:field="*{biodata.id}"/>
+</div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="nohp">Nomer Hanphone</label>
+    <div class="col-lg-6">
+        <input type="text" class="form-control" name="nohp"  th:field="*{rumah.nohp}" id="nohp"/>
+        <div style="color: red;" id="invalid-nohp" class="error_msg"></div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-lg-3 control-label" for="email">Email</label>
+    <div class="col-lg-6">
+        <input type="email" class="form-control" name="email"  th:field="*{rumah.email}" id="email"/>
+        <div style="color: red;" id="invalid-email" class="error_msg"></div>
+    </div>
+</div>

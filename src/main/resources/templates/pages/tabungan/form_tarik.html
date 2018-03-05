@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Tabungan</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h4>Tarik Saldo Tabungan</h4>
+    <form class="form-horizontal" th:action="@{/tabungan/tarik/submit}" th:object="${mutasi}"
+          th:method="post" action="/tabungan/tarik/submit" method="post" enctype="multipart/form-data" >
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="nomorRekening">Nomer Rekning</label>
+            <div class="col-lg-6">
+                <input type="text" id="nomorRekening" class="form-control" name="nomorRekening"
+                       th:field="*{tabungan.nomorRekening}" readonly/>
+            </div>
+            <div class="col-lg-4">
+                <input type="hidden" th:field="*{tabungan.id}" name="tabunganId">
+                <input type="hidden" th:field="*{tabungan.saldo}" name="saldoTabungan">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="namaNasabah">Nama Nasabah</label>
+            <div class="col-lg-6">
+                <input type="text" id="namaNasabah" class="form-control" name="namaNasabah"
+                       th:field="*{tabungan.nasabah.namaLengkap}" readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="credit">Setoran Tabungan</label>
+            <div class="col-lg-6">
+                <input type="number" id="debet" class="form-control" name="debet" th:field="*{debet}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-2">
+                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>

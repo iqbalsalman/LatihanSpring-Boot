@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Agama</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Form Agama</li>
+    </ol>
+    <form class="form-horizontal" th:action="@{/agama/submit}"
+          th:object="${agama}" th:method="post" action="/agama/submit" method="post" enctype="multipart/form-data" >
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="namaAgama">Nama Agama</label>
+            <div class="col-lg-6">
+                <input type="text" id="namaAgama" class="form-control" name="namaAgama" th:field="*{nama}"/>
+                <div th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}" class="alert alert-danger">Age Error</div>
+            </div>
+            <div class="col-lg-4">
+                <input type="hidden" id="kodeAgama" class="form-control" name="kodeAgama" th:field="*{id}" readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Deskripsi</label>
+            <div class="col-lg-6">
+                <textarea name="description" th:field="*{deskripsi}" class="form-control" id="description" cols="30"
+                +                      rows="10"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-2">
+                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>

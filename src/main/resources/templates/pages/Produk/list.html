@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Produk</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Data Product</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="alert alert-success" th:if="${sukses} != null" th:text="${sukses}"></div>
+            <div class="alert alert-danger" th:if="${noValid} != null" th:text="${noValid}"></div>
+            <i class="fa fa-table"></i> Data Table Produk</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Nomer</th>
+                        <th>Nama Produk</th>
+                        <th>Kode Produk</th>
+                        <th>Storan Awal</th>
+                        <th>Bunga</th>
+                        <th>Biaya Admin</th>
+                        <th>Active</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="produk, itrStat :  ${lisproduk}">
+                        <td th:text="${itrStat.count}"></td>
+                        <td th:text="${produk.nama}"></td>
+                        <td th:text="${produk.kode}"></td>
+                        <td th:text="${produk.setoran_awal}"></td>
+                        <td th:text="${produk.bunga}"></td>
+                        <td th:text="${produk.biaya_admin}"></td>
+                        <td th:text="${produk.active}"></td>
+                        <td><a th:href="${'/produk/hapus/' + produk.id}" class="btn btn-info">Hapus</a>
+                            <a th:href="${'/produk/form/' + produk.id}" class="btn btn-danger">Edit</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/index}">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Nasabah Perorangan</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Form Biodata Nasabah Badan Usaha</li>
+    </ol>
+
+    <form class="form-horizontal" th:action="@{/nasabahbadan/submit}"
+          th:object="${nasabahb}" th:method="post" action="/nasabahbadan/submit" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="namalengkap">Nama Lengkap</label>
+              <div class="col-lg-3">
+                  <input type="text" name="namalengkap" class="form-control" id="namalengkap" th:field="*{namaLengkap}"/>
+              </div>
+            <div class="col-lg-3">
+                <input type="hidden" id="kodeKota" class="form-control" name="kodeKota" th:field="*{id}" readonly/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="alamat">Alamat</label>
+            <div class="col-lg-6">
+                <textarea name="alamat" th:field="*{alamat}" class="form-control" id="alamat" cols="30"
+                      + rows="10"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" for="nomorNpwp">Nomer NPWP</label>
+            <div class="col-lg-6">
+                <input type="text" name="nomorNpwp" class="form-control" id="nomorNpwp" th:field="*{nomorNpwp}"/>
+            </div>
+        </div>
+       <br/>
+        <div class="form-group">
+            <div class="col-lg-2">
+                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+            </div>
+        </div>
+    </form>
+   </section>
+  </body>
+</html>
