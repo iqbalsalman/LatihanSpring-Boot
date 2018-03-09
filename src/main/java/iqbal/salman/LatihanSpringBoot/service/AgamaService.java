@@ -9,7 +9,7 @@ package iqbal.salman.LatihanSpringBoot.service;
 import iqbal.salman.LatihanSpringBoot.master.agama.Agama;
 import iqbal.salman.LatihanSpringBoot.repository.AgamaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author iqbal
  */
-@Repository
+@Service
 @Transactional(readOnly = true)
 public class AgamaService {
 

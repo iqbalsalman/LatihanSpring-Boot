@@ -59,6 +59,7 @@ public class AgamaController {
     public String submitAgama(@Valid @ModelAttribute Agama agama, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         agama.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
         agama.setCreatedBy("admin");
+
         if (bindingResult.hasErrors()) {
             return "pages/agama/form";
         }
